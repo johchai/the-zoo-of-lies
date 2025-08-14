@@ -32,9 +32,7 @@ Deploy the worker using Wrangler:
 wrangler deploy
 ```
 
-We have bind a KV namespace to the worker in `wrangler.toml`:
-
-There is "id" and "preview_id" for the KV namespace. The "id" is used for production and the "preview_id" is used for preview environments. To see them in the development, use `wrangler dev --remote` command. Deployment should use the "id" for production.
+We have to bind a KV namespace to the worker in `wrangler.toml` file to read our content.
 
 ```toml
 kv_namespaces = [

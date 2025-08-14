@@ -1,20 +1,22 @@
 import { Hono } from "hono";
+import { quotesRoutes } from "./quotes";
 
 type CloudflareBindings = {
-  FACTS: KVNamespace;
+  QUOTES: KVNamespace;
 };
 
 const app = new Hono<{ Bindings: CloudflareBindings }>();
 
-export const routeAnimals = app.get("/", async (c) => {
-  // Fetch animal facts from KV storage
-  const facts = await c.env.FACTS.list();
-  return c.json(facts);
+app.route("/quotes", quotesRoutes);
 
-  // For demonstration purposes, returning a static list of animals
-  // return c.json([
-  //   { id: 1, name: "Lion" },
-  //   { id: 2, name: "Tiger" },
-  //   { id: 3, name: "Bear" },
-  // ]);
+app.get("/", (c) => {
+  return c.json({
+    message: "Quoutes API",
+    endpoints: {
+      random: "/quotes/random?count=1",
+      specific: "/quotes/:id",
+    },
+  });
 });
+
+export { app as routeAPI };

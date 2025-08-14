@@ -1,12 +1,14 @@
 import { Hono } from "hono";
 import { renderer } from "./renderer";
-import { routeAnimals } from "./api";
+import { routeAPI } from "./api";
 import { routeClient } from "./client";
 
 // this is the main entry point for the application
-// it will serve a frontend and an API
 
-const app = new Hono();
+type CloudflareBindings = {
+  QUOTE: KVNamespace;
+};
+const app = new Hono<{ Bindings: CloudflareBindings }>();
 
 // use the renderer for all routes
 app.use(renderer);
@@ -15,6 +17,6 @@ app.use(renderer);
 app.route("/", routeClient);
 
 // return API
-app.route("/animals", routeAnimals);
+app.route("/api", routeAPI);
 
 export default app;

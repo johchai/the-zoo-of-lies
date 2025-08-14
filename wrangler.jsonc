@@ -5,9 +5,9 @@
   "main": "./src/app.ts",
   "kv_namespaces": [
     {
-      "binding": "FACTS",
-      "id": "751e43dec8154b75a9f3a87550c573ff",
-      "preview_id": "5ec6e4da62494cd7909b7db5e1f9aab7"
+      "binding": "QUOTES",
+      "id": "7f1b9d3601e34d7ba7a445dd5118a9e6",
+      "preview_id": "9b7acf3d0fae4a7ead1d713d629004bf"
     }
   ]
 }
