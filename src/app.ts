@@ -3,11 +3,12 @@ import { renderer } from "./renderer";
 import { routeAPI } from "./api";
 import { routeClient } from "./client";
 
-// this is the main entry point for the application
+// main entry point for the application
 
 type CloudflareBindings = {
   QUOTE: KVNamespace;
 };
+
 const app = new Hono<{ Bindings: CloudflareBindings }>();
 
 // use the renderer for all routes
