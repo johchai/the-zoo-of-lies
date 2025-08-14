@@ -2,5 +2,12 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "the-zoo-of-lies-api",
   "compatibility_date": "2025-08-03",
-  "main": "./src/app.ts"
+  "main": "./src/app.ts",
+  "kv_namespaces": [
+    {
+      "binding": "FACTS",
+      "id": "751e43dec8154b75a9f3a87550c573ff",
+      "preview_id": "5ec6e4da62494cd7909b7db5e1f9aab7"
+    }
+  ]
 }
