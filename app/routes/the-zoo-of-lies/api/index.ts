@@ -1,4 +1,4 @@
-import { cloudflareRateLimiter } from "@hono-rate-limiter/cloudflare";
+import { error } from "console";
 import { Hono } from "hono";
 
 type AppType = {
@@ -11,18 +11,29 @@ type AppType = {
   };
 };
 
-const app = new Hono<AppType>().use(
-  cloudflareRateLimiter<AppType>({
-    rateLimitBinding: (c) => c.env.RATE_LIMITER,
-    keyGenerator: (c) => c.req.header("cf-connecting-ip") ?? "", // Method to generate custom identifiers for clients.
-    handler: (c) => {
-      return c.json(
-        { error: "Rate limit exceeded. Please try again later." },
-        429
-      );
-    }
-  })
-);
+const app = new Hono<AppType>();
+
+// middleware to handle rate limiting - lazy import AND only in prod since this will not be used in dev
+if (process.env.NODE_ENV === "production") {
+  const { cloudflareRateLimiter } = await import(
+    "@hono-rate-limiter/cloudflare"
+  );
+
+  app.use(
+    cloudflareRateLimiter<AppType>({
+      rateLimitBinding: (c) => c.env.RATE_LIMITER,
+      keyGenerator: (c) => c.req.header("cf-connecting-ip") ?? "",
+      handler: (c) =>
+        c.json(
+          {
+            error: "Rate limit exceeded. Please try again later.",
+            count: 0
+          },
+          429
+        )
+    })
+  );
+}
 
 // GET /the-zoo-of-lies/api/
 app.get("/", async (c) => {
