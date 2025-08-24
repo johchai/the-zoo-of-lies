@@ -8,9 +8,14 @@ export default defineConfig({
   plugins: [
     honox({
       devServer: { adapter },
-      client: { input: ["./app/styles/globals.css"] },
+      client: { input: ["./app/styles/globals.css"] }
     }),
     tailwindcss(),
-    build(),
+    build()
   ],
+  build: {
+    rollupOptions: {
+      external: ["cloudflare:workers"]
+    }
+  }
 });

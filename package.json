@@ -9,7 +9,9 @@
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
+    "@hono-rate-limiter/cloudflare": "^0.2.2",
     "hono": "^4.9.1",
+    "hono-rate-limiter": "^0.4.2",
     "honox": "^0.1.44"
   },
   "devDependencies": {

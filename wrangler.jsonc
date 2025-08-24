@@ -19,5 +19,18 @@
   ],
   "assets": {
     "directory": "./dist"
+  },
+  "unsafe": {
+    "bindings": [
+      {
+        "name": "RATE_LIMITER",
+        "type": "ratelimit",
+        "namespace_id": "1001",
+        "simple": {
+          "limit": 10,
+          "period": 60
+        }
+      }
+    ]
   }
 }

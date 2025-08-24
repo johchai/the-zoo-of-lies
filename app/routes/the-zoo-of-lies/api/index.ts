@@ -1,11 +1,28 @@
-// app/routes/the-zoo-of-lies/api/index.ts
+import { cloudflareRateLimiter } from "@hono-rate-limiter/cloudflare";
 import { Hono } from "hono";
 
-type CloudflareBindings = {
-  FACTS: KVNamespace;
+type AppType = {
+  Variables: {
+    rateLimit: boolean;
+  };
+  Bindings: {
+    FACTS: KVNamespace;
+    RATE_LIMITER: RateLimit;
+  };
 };
 
-const app = new Hono<{ Bindings: CloudflareBindings }>();
+const app = new Hono<AppType>().use(
+  cloudflareRateLimiter<AppType>({
+    rateLimitBinding: (c) => c.env.RATE_LIMITER,
+    keyGenerator: (c) => c.req.header("cf-connecting-ip") ?? "", // Method to generate custom identifiers for clients.
+    handler: (c) => {
+      return c.json(
+        { error: "Rate limit exceeded. Please try again later." },
+        429
+      );
+    }
+  })
+);
 
 // GET /the-zoo-of-lies/api/
 app.get("/", async (c) => {
@@ -46,8 +63,6 @@ app.get("/", async (c) => {
 });
 
 // GET /the-zoo-of-lies/api/:id
-// Fetch a fact by its ID
-// GET /:id
 app.get("/:id", async (c) => {
   const id = c.req.param("id");
 
