@@ -1,13 +1,23 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "the-zoo-of-lies-api",
+  "name": "the-zoo-of-lies",
   "compatibility_date": "2025-08-03",
-  "main": "./src/app.ts",
+  "main": "./dist/index.js",
   "kv_namespaces": [
     {
-      "binding": "QUOTES",
+      "binding": "FACTS",
       "id": "7f1b9d3601e34d7ba7a445dd5118a9e6",
       "preview_id": "9b7acf3d0fae4a7ead1d713d629004bf"
     }
-  ]
+  ],
+  "compatibility_flags": ["nodejs_compat"],
+  "routes": [
+    {
+      "pattern": "projects.oodah.my/*",
+      "zone_name": "oodah.my"
+    }
+  ],
+  "assets": {
+    "directory": "./dist"
+  }
 }
