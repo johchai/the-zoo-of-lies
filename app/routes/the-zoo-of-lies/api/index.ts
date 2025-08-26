@@ -1,4 +1,3 @@
-import { error } from "console";
 import { Hono } from "hono";
 
 type AppType = {
