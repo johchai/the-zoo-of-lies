@@ -1,3 +1,4 @@
+import { cors } from "hono/cors";
 import { showRoutes } from "hono/dev";
 import { trimTrailingSlash } from "hono/trailing-slash";
 import { createApp } from "honox/server";

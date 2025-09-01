@@ -1,16 +1,6 @@
-import { Hono } from "hono";
+import { Env, Hono } from "hono";
 
-type AppType = {
-  Variables: {
-    rateLimit: boolean;
-  };
-  Bindings: {
-    FACTS: KVNamespace;
-    RATE_LIMITER: RateLimit;
-  };
-};
-
-const app = new Hono<AppType>();
+const app = new Hono<Env>();
 
 // middleware to handle rate limiting - lazy import AND only in prod since this will not be used in dev
 if (process.env.NODE_ENV === "production") {
@@ -19,7 +9,7 @@ if (process.env.NODE_ENV === "production") {
   );
 
   app.use(
-    cloudflareRateLimiter<AppType>({
+    cloudflareRateLimiter<Env>({
       rateLimitBinding: (c) => c.env.RATE_LIMITER,
       keyGenerator: (c) => c.req.header("cf-connecting-ip") ?? "",
       handler: (c) =>

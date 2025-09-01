@@ -1,1 +1,21 @@
 @import "tailwindcss";
+
+:root {
+  --primary: #0e0062;
+  --secondary: #f9efe9;
+  --highlight: #ffec98;
+  --error: #ff4d4f;
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-highlight: var(--highlight);
+  --color-error: var(--error);
+}
+
+html {
+  font-family: "Sora", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}

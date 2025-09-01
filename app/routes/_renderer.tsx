@@ -10,6 +10,12 @@ export default jsxRenderer(({ children }) => {
         <link rel="icon" href="/favicon.ico" />
         <Link href="/app/styles/globals.css" rel="stylesheet" />
         <Script src="/app/client.ts" async />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap"
+          rel="stylesheet"
+        />
       </head>
       <body>{children}</body>
     </html>

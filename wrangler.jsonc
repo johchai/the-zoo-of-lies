@@ -13,12 +13,27 @@
   "compatibility_flags": ["nodejs_compat"],
   "routes": [
     {
-      "pattern": "projects.oodah.my/*",
-      "zone_name": "oodah.my"
+      "pattern": "projects.johnnychai.my/*",
+      "zone_name": "johnnychai.my"
     }
   ],
   "assets": {
     "directory": "./dist"
+  },
+  "vars": {
+    "API_URL": "https://projects.johnnychai.my/the-zoo-of-lies/api"
+  },
+  "env": {
+    "dev": {
+      "vars": {
+        "API_URL": "http://localhost:8787/the-zoo-of-lies/api"
+      }
+    },
+    "prod": {
+      "vars": {
+        "API_URL": "https://projects.johnnychai.my/the-zoo-of-lies/api"
+      }
+    }
   },
   "unsafe": {
     "bindings": [
@@ -32,5 +47,10 @@
         }
       }
     ]
+  },
+  "observability": {
+    "logs": {
+      "enabled": true
+    }
   }
 }
