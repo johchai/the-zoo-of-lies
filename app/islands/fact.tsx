@@ -44,13 +44,16 @@ export const Fact = (props: Fact) => {
   }, []);
 
   return (
-    <div class="mx-auto w-full max-w-5xl">
-      <div class="border-primary grid min-w-full grid-cols-[1fr_1fr_1fr_auto] place-content-between items-center gap-12 border-2 p-6">
-        <div class="text-primary col-span-3 my-3 overflow-x-scroll text-lg font-semibold">
+    <div class="mx-auto size-full max-w-5xl">
+      <div class="border-primary grid min-w-full grid-cols-[1fr_1fr_1fr_auto] place-content-between items-center gap-6 border-2 p-6 md:gap-12">
+        <div class="text-primary col-span-4 my-3 overflow-x-visible text-lg font-semibold md:col-span-3 md:overflow-x-auto">
           {data && !loading && (
             <div>
               {data.map((fact) => (
-                <h3 class="whitespace-nowrap" key={fact.id}>
+                <h3
+                  class="whitespace-normal md:whitespace-nowrap"
+                  key={fact.id}
+                >
                   {fact.fact}
                 </h3>
               ))}
@@ -59,8 +62,9 @@ export const Fact = (props: Fact) => {
           {error && <span class="text-error">Error: {error}</span>}
           {loading && <span class="text-primary">Loading...</span>}
         </div>
-        <div class="col-span-1 flex-none -translate-1.5">
+        <div class="col-span-4 flex-none -translate-1.5 md:col-span-1">
           <Button
+            className="w-full md:w-fit"
             label="New fact"
             onClick={fetchData}
             icon={{

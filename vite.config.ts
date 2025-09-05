@@ -9,7 +9,10 @@ export default defineConfig({
   plugins: [
     honox({
       devServer: { adapter },
-      client: { input: ["./app/styles/globals.css"] }
+      client: { input: ["./app/styles/globals.css"] },
+      islandComponents: {
+        reactApiImportSource: "hono/jsx"
+      }
     }),
     tailwindcss(),
     build(),

@@ -1,4 +1,5 @@
 interface ButtonProps {
+  className?: string;
   label: string;
   href?: string;
   onClick?: () => void;
@@ -9,12 +10,23 @@ interface ButtonProps {
 }
 
 const baseClass =
-  "bg-secondary flex flex-row gap-2.5 items-center cursor-pointer text-primary shadow-primary border-primary w-fit border-2 px-6 py-3 font-semibold shadow-[6px_6px_0px_0px] transition-all duration-150 ease-in-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-[0px_0px_0px_0px]";
+  "bg-secondary flex place-content-between flex-row gap-2.5 items-center cursor-pointer text-primary shadow-primary border-primary w-fit border-2 px-6 py-3 font-semibold shadow-[6px_6px_0px_0px] transition-all duration-150 ease-in-out hover:translate-x-1.5 hover:translate-y-1.5 hover:shadow-[0px_0px_0px_0px]";
 
-export const Button = ({ label, href, onClick, icon }: ButtonProps) => {
+export const Button = ({
+  label,
+  href,
+  onClick,
+  icon,
+  className
+}: ButtonProps) => {
   if (href) {
     return (
-      <a className={baseClass} href={href} target="_blank" rel="noreferrer">
+      <a
+        className={`${baseClass} ${className}`}
+        href={href}
+        target="_blank"
+        rel="noreferrer"
+      >
         {icon?.left && (
           <span>
             <img class="size-5" src={icon.left} />
@@ -31,9 +43,9 @@ export const Button = ({ label, href, onClick, icon }: ButtonProps) => {
   }
 
   return (
-    <button onClick={onClick} className={baseClass}>
+    <button onClick={onClick} className={`${baseClass} ${className}`}>
       {icon?.left && (
-        <span>
+        <span class="">
           <img class="size-5" src={icon.left} />
         </span>
       )}

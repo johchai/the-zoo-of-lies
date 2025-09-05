@@ -19,3 +19,12 @@ html {
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+.fade-text {
+  -webkit-mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-image: linear-gradient(to right, black 80%, transparent 100%);
+  mask-repeat: no-repeat;
+  mask-size: 100% 100%;
+}

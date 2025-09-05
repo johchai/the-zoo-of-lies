@@ -56,7 +56,7 @@ export default createRoute((c) => {
         />
       </Container>
       <Container title="Motivation">
-        <p class="text-primary text-center text-lg">
+        <p class="text-primary text-center text-base md:text-lg">
           This project is hosted on Cloudflare Workers, with KV as the database,
           because why not make nonsense fast at the edge? Actually, this is just
           me testing out Hono with React and Cloudflare Workers, playing with

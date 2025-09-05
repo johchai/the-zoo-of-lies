@@ -7,13 +7,13 @@ interface Hero {
 
 export const Hero = ({ API_URL }: Hero) => {
   return (
-    <section class="border-primary flex w-full flex-col items-center gap-12 border-b-2 px-12 py-24">
-      <div class="mx-auto max-w-3xl">
-        <div class="mx-auto flex w-full flex-col gap-6">
-          <h1 class="text-primary text-center text-6xl leading-tight font-extrabold">
+    <section class="border-primary flex w-full flex-col items-stretch gap-6 border-b-2 px-6 py-12 md:gap-12 md:px-12 md:py-24">
+      <div class="mx-auto max-w-3xl pt-48 lg:pt-0">
+        <div class="mx-auto flex w-full flex-col gap-3 md:gap-6">
+          <h1 class="text-primary text-center text-4xl leading-tight font-extrabold md:text-6xl">
             Randomly Wrong Animal Facts API
           </h1>
-          <p class="text-primary text-center text-2xl font-normal">
+          <p class="text-primary text-center text-xl font-medium md:text-2xl">
             Get absurd animal facts in JSON. Perfect for demos, hackathons, or
             when you need a laugh.
           </p>
@@ -21,6 +21,7 @@ export const Hero = ({ API_URL }: Hero) => {
       </div>
       <Fact API_URL={API_URL} />
       <Button
+        className="mx-auto"
         label="View on Github"
         href="https://github.com/johchai/the-zoo-of-lies"
         icon={{
@@ -29,7 +30,7 @@ export const Hero = ({ API_URL }: Hero) => {
         }}
       />
       <img
-        class="absolute right-0"
+        class="pointer-events-none absolute -top-6 right-0 -rotate-[25deg] select-none md:rotate-0"
         src="./bewildered-giraffe-the-zoo-of-lies.png"
         width="273"
         height="411"

@@ -18,7 +18,7 @@ export const Panel = (props: PanelProps) => {
         {props.content.map((item, index) => (
           <div key={index} class="flex flex-col gap-3">
             <h3 class="text-primary text-xl font-semibold">{item.title}</h3>
-            <pre class="bg-highlight text-primary border-primary overflow-x-scroll border-2 p-6">
+            <pre class="bg-highlight text-primary border-primary overflow-x-auto border-2 p-3 text-base md:p-6 md:text-lg">
               <code>{JSON.stringify(item.json, null, 2)}</code>
             </pre>
           </div>
