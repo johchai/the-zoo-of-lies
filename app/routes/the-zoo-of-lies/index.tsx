@@ -1,9 +1,11 @@
-import { Container, Footer, Hero, Panel } from "@app/components";
+import { Container, Footer, Panel } from "@app/components";
+// import { Hero } from "../../islands/hero";
+import { Hero } from "@app/islands";
 import { createRoute } from "honox/factory";
 
 export default createRoute((c) => {
   return c.render(
-    <main class="flex flex-col items-center justify-center">
+    <main>
       <title>The Zoo of Lies</title>
       <Hero API_URL={c.env.API_URL} />
       <Container title="Endpoints">
@@ -14,7 +16,7 @@ export default createRoute((c) => {
               title: "Retrieve a single random fact",
               json: {
                 method: "GET",
-                path: "https://example.com/api/quotes/random",
+                path: "https://projects.johnnychai.my/the-zoo-of-lies/api",
                 description: "Returns a random fact."
               }
             },
@@ -22,7 +24,7 @@ export default createRoute((c) => {
               title: "Retrieve an amount of fact(s)",
               json: {
                 method: "GET",
-                path: "https://example.com/api/quotes/random?count=3",
+                path: "https://projects.johnnychai.my/the-zoo-of-lies/api?count=3",
                 description: "Returns a list of 3 random facts."
               }
             },
@@ -30,7 +32,7 @@ export default createRoute((c) => {
               title: "Retrieve a specific fact by ID",
               json: {
                 method: "GET",
-                path: "https://example.com/api/quotes?id=1",
+                path: "https://projects.johnnychai.my/the-zoo-of-lies/api/2",
                 description: "Returns a specific fact."
               }
             }
@@ -56,7 +58,7 @@ export default createRoute((c) => {
         />
       </Container>
       <Container title="Motivation">
-        <p class="text-primary text-center text-base md:text-lg">
+        <p class="text-primary text-center text-base leading-normal md:text-lg md:leading-relaxed">
           This project is hosted on Cloudflare Workers, with KV as the database,
           because why not make nonsense fast at the edge? Actually, this is just
           me testing out Hono with React and Cloudflare Workers, playing with

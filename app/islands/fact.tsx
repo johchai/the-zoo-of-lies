@@ -25,7 +25,6 @@ export const Fact = (props: Fact) => {
     setData(null);
 
     try {
-      // const res = await fetch("http://localhost:8787/the-zoo-of-lies/api");
       const res = await fetch(props.API_URL);
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
       const json: ApiData = await res.json();

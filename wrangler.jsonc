@@ -3,13 +3,6 @@
   "name": "the-zoo-of-lies",
   "compatibility_date": "2025-08-03",
   "main": "./dist/index.js",
-  "kv_namespaces": [
-    {
-      "binding": "FACTS",
-      "id": "7f1b9d3601e34d7ba7a445dd5118a9e6",
-      "preview_id": "9b7acf3d0fae4a7ead1d713d629004bf"
-    }
-  ],
   "compatibility_flags": ["nodejs_compat"],
   "routes": [
     {
@@ -23,18 +16,13 @@
   "vars": {
     "API_URL": "https://projects.johnnychai.my/the-zoo-of-lies/api"
   },
-  "env": {
-    "dev": {
-      "vars": {
-        "API_URL": "http://localhost:8787/the-zoo-of-lies/api"
-      }
-    },
-    "prod": {
-      "vars": {
-        "API_URL": "https://projects.johnnychai.my/the-zoo-of-lies/api"
-      }
+  "kv_namespaces": [
+    {
+      "binding": "FACTS",
+      "id": "7f1b9d3601e34d7ba7a445dd5118a9e6",
+      "preview_id": "9b7acf3d0fae4a7ead1d713d629004bf"
     }
-  },
+  ],
   "unsafe": {
     "bindings": [
       {
@@ -47,6 +35,58 @@
         }
       }
     ]
+  },
+  "env": {
+    "dev": {
+      "vars": {
+        "API_URL": "http://localhost:8787/the-zoo-of-lies/api"
+      },
+      "kv_namespaces": [
+        {
+          "binding": "FACTS",
+          "id": "7f1b9d3601e34d7ba7a445dd5118a9e6",
+          "preview_id": "9b7acf3d0fae4a7ead1d713d629004bf"
+        }
+      ],
+      "unsafe": {
+        "bindings": [
+          {
+            "name": "RATE_LIMITER",
+            "type": "ratelimit",
+            "namespace_id": "1001",
+            "simple": {
+              "limit": 10,
+              "period": 60
+            }
+          }
+        ]
+      }
+    },
+    "prod": {
+      "vars": {
+        "API_URL": "https://projects.johnnychai.my/the-zoo-of-lies/api"
+      },
+      "kv_namespaces": [
+        {
+          "binding": "FACTS",
+          "id": "7f1b9d3601e34d7ba7a445dd5118a9e6",
+          "preview_id": "9b7acf3d0fae4a7ead1d713d629004bf"
+        }
+      ],
+      "unsafe": {
+        "bindings": [
+          {
+            "name": "RATE_LIMITER",
+            "type": "ratelimit",
+            "namespace_id": "1001",
+            "simple": {
+              "limit": 10,
+              "period": 60
+            }
+          }
+        ]
+      }
+    }
   },
   "observability": {
     "logs": {

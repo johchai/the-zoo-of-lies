@@ -1,5 +1,5 @@
+import { Button } from "@app/components";
 import { Fact } from "@app/islands";
-import { Button } from "./button";
 
 interface Hero {
   API_URL: string;
@@ -19,7 +19,6 @@ export const Hero = ({ API_URL }: Hero) => {
           </p>
         </div>
       </div>
-      <Fact API_URL={API_URL} />
       <Button
         className="mx-auto"
         label="View on Github"
@@ -29,6 +28,7 @@ export const Hero = ({ API_URL }: Hero) => {
           right: "./icons/arrow-right.svg"
         }}
       />
+      <Fact API_URL={API_URL} />
       <img
         class="pointer-events-none absolute -top-6 right-0 -rotate-[25deg] select-none md:rotate-0"
         src="./bewildered-giraffe-the-zoo-of-lies.png"
